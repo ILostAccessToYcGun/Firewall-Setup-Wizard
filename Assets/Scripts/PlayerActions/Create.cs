@@ -24,11 +24,6 @@ public class Create : MonoBehaviour
         mousePos.Disable();
     }
 
-    void Start()
-    {
-        
-    }
-
     // Update is called once per frame
     void Update()
     {
