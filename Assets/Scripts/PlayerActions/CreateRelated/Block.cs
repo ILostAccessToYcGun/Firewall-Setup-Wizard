@@ -35,7 +35,7 @@ public class Block : MonoBehaviour, ITakeDamage
 
     public void TakeDamage(int damage)
     {
-        health -= damage;
+        health -= Mathf.Abs(damage);
         healthUI.text = health.ToString();
         if (health <= 0)
         {
@@ -45,6 +45,7 @@ public class Block : MonoBehaviour, ITakeDamage
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        if (collision.gameObject.layer == gameObject.layer) return;
         if (sharedHandler != null) return;
         ITakeDamage itd = collision.gameObject.GetComponent<ITakeDamage>();
         if (itd != null)

@@ -2,15 +2,8 @@ using UnityEngine;
 
 public class ToolManager : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    public enum Tools { Create, Select, Move };
+    public Tools equippedTool = Tools.Create;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
 }
