@@ -49,7 +49,7 @@ public class Move : MonoBehaviour
     {
         isPressed = !isPressed;
 
-        if (isPressed && currentArrowStart == null && currentArrowEnd == null)
+        if (isPressed && currentArrowStart == null && currentArrowEnd == null && selectTool.selectedBlocks.Count > 0)
         {
             Vector3 screenToWorld = Camera.main.ScreenToWorldPoint(currentMousePos);
             Vector3 pos = new Vector3(screenToWorld.x, screenToWorld.y, 0.0f);
@@ -67,8 +67,11 @@ public class Move : MonoBehaviour
 
             for(int i = 0; i < selectTool.selectedBlocks.Count; i++)
             {
-                selectTool.selectedBlocks[i].speed = magnitude;
+                selectTool.selectedBlocks[i].speed = Mathf.Clamp(magnitude, 0.0f, 25.0f);
                 selectTool.selectedBlocks[i].direction = direction;
+
+                selectTool.selectedBlocks[i].health = (int)Mathf.Lerp((float)selectTool.selectedBlocks[i].health, 1.0f, selectTool.selectedBlocks[i].speed / 25.0f);
+                selectTool.selectedBlocks[i].UpdateHPUI();
             }
 
 

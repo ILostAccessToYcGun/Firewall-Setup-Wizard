@@ -36,11 +36,16 @@ public class Block : MonoBehaviour, ITakeDamage
     public void TakeDamage(int damage)
     {
         health -= Mathf.Abs(damage);
-        healthUI.text = health.ToString();
+        UpdateHPUI();
         if (health <= 0)
         {
             Destroy(this.gameObject);
         }
+    }
+
+    public void UpdateHPUI()
+    {
+        healthUI.text = health.ToString();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
