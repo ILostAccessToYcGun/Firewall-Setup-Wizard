@@ -39,7 +39,7 @@ public class ToolManager : MonoBehaviour
 
         createComponent = FindFirstObjectByType<Create>(FindObjectsInactive.Include).gameObject;
         selectComponent = FindFirstObjectByType<Select>(FindObjectsInactive.Include).gameObject;
-        //moveComponent = FindFirstObjectByType<Move>(FindObjectsInactive.Include).gameObject;
+        moveComponent = FindFirstObjectByType<Move>(FindObjectsInactive.Include).gameObject;
         switch (equippedTool)
         {
             case Tools.Create:
@@ -88,17 +88,17 @@ public class ToolManager : MonoBehaviour
             case Tools.Create:
                 createComponent.SetActive(true);
                 selectComponent.SetActive(false);
-                //moveComponent.SetActive(false);
+                moveComponent.SetActive(false);
                 break;
             case Tools.Select:
                 createComponent.SetActive(false);
                 selectComponent.SetActive(true);
-                //moveComponent.SetActive(false);
+                moveComponent.SetActive(false);
                 break;
             case Tools.Move:
                 createComponent.SetActive(false);
                 selectComponent.SetActive(false);
-                //moveComponent.SetActive(true);
+                moveComponent.SetActive(true);
                 break;
         }
     }
